@@ -74,7 +74,7 @@ public class JFlexScraper implements WebScraper {
              *
              * Este código deberá ir consumiendo, uno a uno, todos los tokens
              * del fichero hasta que el fin de fichero.
-             *
+            
              * Diseñe un autómata que vaya transitando en función del token que
              * encuentre y del estado en que se encuentra. De esa manera,
              * reconozca estructuras como la apertura o cierre de una etiqueta.
@@ -134,8 +134,12 @@ public class JFlexScraper implements WebScraper {
                             case WORD:
                                 if(token.getValue().equalsIgnoreCase("A")){
                                     state=2;
+                                    tagStack.push(token.getValue());
                                 }else if(token.getValue().equalsIgnoreCase("IMG")){
                                     state=3;
+                                    tagStack.push(token.getValue());
+                                }else {
+                                    tagStack.push(token.getValue());
                                 }
                                 break;
                             case SLASH:

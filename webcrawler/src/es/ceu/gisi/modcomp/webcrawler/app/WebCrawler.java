@@ -3,6 +3,9 @@ package es.ceu.gisi.modcomp.webcrawler.app;
 import es.ceu.gisi.modcomp.webcrawler.exceptions.WebCrawlerException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.File;
+
+import es.ceu.gisi.modcomp.webcrawler.jflex.*;
 
 /**
  * Esta aplicación contiene el programa principal que ejecuta ambas partes del
@@ -13,6 +16,12 @@ import java.io.IOException;
 public class WebCrawler {
 
     public static void main(String[] args) throws IOException, FileNotFoundException, WebCrawlerException {
+        
+        final String TESTFILE_PATH = new java.io.File("").getAbsolutePath() + "/test/es/ceu/gisi/modcomp/webcrawler/testfiles/";
+        
+        final File TEST_FILE1 = new File(TESTFILE_PATH + "prueba1.html");
+
+         
         /**
          * En este método main, debajo de este comentario, escribirá las líneas
          * necesarias para mostrar el funcionamiento de las clases JFlexScraper
@@ -34,8 +43,11 @@ public class WebCrawler {
          * También deberá mostrar un mensaje en pantalla indicando si el fichero
          * HTML que se ha pasado está bien balanceado.
          */
+        
         System.out.println("\n\n** JFLEXSCRAPER **\n\n");
-
+        JFlexScraper prueba = new JFlexScraper(TEST_FILE1);
+        
+        prueba.retrieveHyperlinksIMG();
         /**
          * En segundo lugar, debajo de este comentario, pasará a demostrar el
          * uso de la clase JsoupScraper que ha programado. Para ello, escribirá
