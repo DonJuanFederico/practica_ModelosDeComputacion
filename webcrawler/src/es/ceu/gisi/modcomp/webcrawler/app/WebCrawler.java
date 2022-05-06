@@ -20,8 +20,11 @@ public class WebCrawler {
         final String TESTFILE_PATH = new java.io.File("").getAbsolutePath() + "/test/es/ceu/gisi/modcomp/webcrawler/testfiles/";
         
         final File TEST_FILE1 = new File(TESTFILE_PATH + "prueba1.html");
-
-         
+        final File TEST_FILE2 = new File(TESTFILE_PATH + "prueba2.html");
+        final File TEST_FILE3 = new File(TESTFILE_PATH + "prueba3.html");
+        final File TEST_FILE4 = new File(TESTFILE_PATH + "prueba4.html");
+        
+        
         /**
          * En este método main, debajo de este comentario, escribirá las líneas
          * necesarias para mostrar el funcionamiento de las clases JFlexScraper
@@ -45,9 +48,16 @@ public class WebCrawler {
          */
         
         System.out.println("\n\n** JFLEXSCRAPER **\n\n");
-        JFlexScraper prueba = new JFlexScraper(TEST_FILE1);
+        //JFlexScraper prueba = new JFlexScraper(TEST_FILE1);
+        //JFlexScraper prueba = new JFlexScraper(TEST_FILE2);
+        //JFlexScraper prueba = new JFlexScraper(TEST_FILE3);
+        //JFlexScraper prueba = new JFlexScraper(TEST_FILE4);
+        System.out.println("links de imagenes:");
+        System.out.println(prueba.retrieveHyperlinksIMG());
+        System.out.println("links de A:");
+        System.out.println(prueba.retrieveHyperlinksA());
         
-        prueba.retrieveHyperlinksIMG();
+        System.out.println("\n Documentos valanceados: " + prueba.esDocumentoHTMLBienBalanceado());
         /**
          * En segundo lugar, debajo de este comentario, pasará a demostrar el
          * uso de la clase JsoupScraper que ha programado. Para ello, escribirá

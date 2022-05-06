@@ -140,6 +140,7 @@ public class JFlexScraper implements WebScraper {
                                     tagStack.push(token.getValue());
                                 }else {
                                     tagStack.push(token.getValue());
+                                    state=8;
                                 }
                                 break;
                             case SLASH:
@@ -173,6 +174,7 @@ public class JFlexScraper implements WebScraper {
                     case 4:
                         switch(token.getType()){
                             case WORD:
+                                tagStack.remove(token.getValue());
                                 state=8;
                                 break;
                             default:
@@ -194,6 +196,7 @@ public class JFlexScraper implements WebScraper {
                         
                         switch(token.getType()){
                             case VALUE:
+                                urlsA.add(token.getValue());
                                 state=7;
                                 break;
                             default:
@@ -206,6 +209,10 @@ public class JFlexScraper implements WebScraper {
                             case CLOSE:
                                 state=0; //Reinicio del automata.
                                 break;
+                            case SLASH:
+                                tagStack.remove(token.getValue());
+                                state=8;
+                                break;
                             default:
                                 //No interesa.
                         }
@@ -214,6 +221,7 @@ public class JFlexScraper implements WebScraper {
                     case 8:
                         switch(token.getType()){
                             case CLOSE:
+                                tagStack.remove(token.getValue());
                                 state=0; //Reinicio del automata.
                                 break;
                             default:
@@ -233,6 +241,7 @@ public class JFlexScraper implements WebScraper {
                     case 10:
                         switch(token.getType()){
                             case VALUE:
+                                urlsIMG.add(token.getValue());
                                 state = 7;
                                 break;
                             default:
