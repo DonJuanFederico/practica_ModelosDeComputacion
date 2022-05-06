@@ -129,7 +129,34 @@ public class JFlexScraper implements WebScraper {
                             // No interesa.
                         }
                         break;
-
+                    case 1: 
+                        switch (token.getType()){
+                            case WORD:
+                                if(token.getValue().equals("A")){
+                                    state=2;
+                                }else if(token.getValue().equalsIgnoreCase("IMG")){
+                                    state=3;
+                                }
+                                break;
+                            case SLASH:
+                                state=4;
+                                break;
+                            default: 
+                            // No interesa.
+                            }
+                        break;
+                    case 2:
+                        switch(token.getType()){
+                            case WORD:
+                                if(token.getValue().equals("href")){
+                                    state=5;
+                                }
+                                break;
+                                default:
+                                    //No interesa.
+                        }
+                    case 3:
+                        
                     // Continúe implementando su autómata....
                     default:
                         throw new WebCrawlerException("Error en la asignación de estado, el programa termina.");
