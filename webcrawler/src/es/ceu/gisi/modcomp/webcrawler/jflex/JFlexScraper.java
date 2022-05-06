@@ -156,6 +156,58 @@ public class JFlexScraper implements WebScraper {
                                     //No interesa.
                         }
                     case 3:
+                        switch(token.getType()){
+                            case WORD:
+                                if(token.getValue().equals("src")){
+                                    state=9;
+                                }
+                                break;
+                            default:
+                                //No interesa.
+                        }
+                        break;
+                    case 4:
+                        switch(token.getType()){
+                            case WORD:
+                                state=8;
+                                break;
+                            default:
+                                //No interesa.
+                                }
+                        break;
+                        
+                    case 5:
+                        switch(token.getType()){
+                            case EQUAL:
+                                state=6;
+                                break;
+                            default:
+                                //No interesa.
+                        }
+                        break;
+                        
+                    case 6:
+                        
+                        switch(token.getType()){
+                            case VALUE:
+                                state=7;
+                                break;
+                            default:
+                                //No interesa.
+                        }
+                        break;
+                        
+                    case 7:
+                        switch(token.getType()){
+                            case CLOSE:
+                                state=0; //Reinicio del automata.
+                                break;
+                            default:
+                                //No interesa.
+                        }
+                        break;
+                        
+                    case 8:
                         
                     // Continúe implementando su autómata....
                     default:
