@@ -132,7 +132,7 @@ public class JFlexScraper implements WebScraper {
                     case 1: 
                         switch (token.getType()){
                             case WORD:
-                                if(token.getValue().equals("A")){
+                                if(token.getValue().equalsIgnoreCase("A")){
                                     state=2;
                                 }else if(token.getValue().equalsIgnoreCase("IMG")){
                                     state=3;
@@ -211,6 +211,15 @@ public class JFlexScraper implements WebScraper {
                         switch(token.getType()){
                             case CLOSE:
                                 state=0; //Reinicio del automata.
+                                break;
+                            default:
+                                //No interesa.
+                        }
+                        break;
+                    case 9:
+                        switch(token.getType()){
+                            case EQUAL:
+                                state=10;
                                 break;
                             default:
                                 //No interesa.
