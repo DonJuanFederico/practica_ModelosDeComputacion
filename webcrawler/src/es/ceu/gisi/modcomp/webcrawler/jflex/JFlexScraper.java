@@ -95,8 +95,10 @@ public class JFlexScraper implements WebScraper {
              *
              */
             // Estado inicial del autómata.
+            String recopilacion = "";
             int state = 0;
-
+            String palabra = "";
+            String comparar ="";
             Token token = parser.next();
 
             while (token != null) {
@@ -133,17 +135,28 @@ public class JFlexScraper implements WebScraper {
                         switch (token.getType()){
                             case WORD:
                                 if(token.getValue().equalsIgnoreCase("A")){
+                                    recopilacion = token.getValue() + recopilacion;
+                                    palabra = token.getValue();
                                     state=2;
                                     tagStack.push(token.getValue());
                                 }else if(token.getValue().equalsIgnoreCase("IMG")){
+                                    recopilacion = recopilacion + token.getValue();
+                                    palabra = token.getValue() ;
                                     state=3;
                                     tagStack.push(token.getValue());
                                 }else {
                                     tagStack.push(token.getValue());
+                                    recopilacion = token.getValue() + recopilacion;
+                                    palabra = token.getValue();
                                     state=8;
                                 }
                                 break;
                             case SLASH:
+                                /*comparar = recopilacion.substring(0,(palabra.length()+1));
+                                if(comparar.equalsIgnoreCase(palabra)){
+                                    comparar = recopilacion.substring(comparar.length(),(recopilacion.length()+1));
+                                    recopilacion= comparar;
+                                }*/
                                 state=4;
                                 break;
                             default: 
@@ -210,7 +223,11 @@ public class JFlexScraper implements WebScraper {
                                 state=0; //Reinicio del automata.
                                 break;
                             case SLASH:
-                                tagStack.remove(token.getValue());
+                                 /*comparar = recopilacion.substring(0,(palabra.length()+1));
+                                if(comparar.equalsIgnoreCase(palabra)){
+                                    comparar = recopilacion.substring(comparar.length(),(recopilacion.length()+1));
+                                    recopilacion= comparar;
+                                }*/
                                 state=8;
                                 break;
                             default:
