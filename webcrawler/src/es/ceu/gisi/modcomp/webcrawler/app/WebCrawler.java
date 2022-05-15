@@ -49,9 +49,9 @@ public class WebCrawler {
         
         System.out.println("\n\n** JFLEXSCRAPER **\n\n");
         //JFlexScraper prueba = new JFlexScraper(TEST_FILE1);
-        JFlexScraper prueba = new JFlexScraper(TEST_FILE2);
+        //JFlexScraper prueba = new JFlexScraper(TEST_FILE2);
         //JFlexScraper prueba = new JFlexScraper(TEST_FILE3);
-        //JFlexScraper prueba = new JFlexScraper(TEST_FILE4);
+        JFlexScraper prueba = new JFlexScraper(TEST_FILE4);
         System.out.println("links de imagenes:");
         System.out.println(prueba.retrieveHyperlinksIMG());
         System.out.println("links de A:");

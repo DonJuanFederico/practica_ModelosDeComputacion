@@ -135,38 +135,52 @@ public class JFlexScraper implements WebScraper {
                         switch (token.getType()){
                             case WORD:
                                 if(token.getValue().equalsIgnoreCase("A")){
-                                    recopilacion = token.getValue() + recopilacion;
-                                    palabra = token.getValue();
+                                    //recopilacion = token.getValue() + recopilacion;
+                                    //palabra = token.getValue();
                                     state=2;
                                     tagStack.push(token.getValue());
                                 }else if(token.getValue().equalsIgnoreCase("IMG")){
-                                    recopilacion = recopilacion + token.getValue();
-                                    palabra = token.getValue() ;
+                                    //recopilacion = recopilacion + token.getValue();
+                                    //palabra = token.getValue() ;
                                     state=3;
                                     tagStack.push(token.getValue());
                                 }else {
                                     tagStack.push(token.getValue());
-                                    recopilacion = token.getValue() + recopilacion;
-                                    palabra = token.getValue();
-                                    state=8;
+                                    //recopilacion = token.getValue() + recopilacion;
+                                    //palabra = token.getValue();
+                                    state=7;
                                 }
                                 break;
                             case SLASH:
-                                /*comparar = recopilacion.substring(0,(palabra.length()+1));
+                               /* comparar = recopilacion.substring(0,(palabra.length()+1));
                                 if(comparar.equalsIgnoreCase(palabra)){
                                     comparar = recopilacion.substring(comparar.length(),(recopilacion.length()+1));
                                     recopilacion= comparar;
+                                    System.out.println("xxxx");
                                 }*/
-                                state=4;
-                                break;
-                            default: 
-                            // No interesa.
+                                token = parser.next();
+                                if(token.getType()== Type.WORD){
+                                     if(tagStack.peek().equals(token.getValue())){
+                                            tagStack.pop();
+                                     }else{
+                                         tagsBalanced = false;
+                                      }
+                                state=8;
+                                }
+                            default:
+                            //no interesa
+                        break;
                             }
                         break;
                     case 2:
                         switch(token.getType()){
                             case WORD:
                                 if(token.getValue().equals("href")){
+                                    token = parser.next();
+                                    if(token.getType()== Type.EQUAL){
+                                        state = 6;
+                                        break;
+                                    }
                                     state=5;
                                 }
                                 break;
@@ -184,33 +198,13 @@ public class JFlexScraper implements WebScraper {
                                 //No interesa.
                         }
                         break;
-                    case 4:
-                        switch(token.getType()){
-                            case WORD:
-                                tagStack.remove(token.getValue());
-                                state=8;
-                                break;
-                            default:
-                                //No interesa.
-                                }
-                        break;
-                        
-                    case 5:
-                        switch(token.getType()){
-                            case EQUAL:
-                                state=6;
-                                break;
-                            default:
-                                //No interesa.
-                        }
-                        break;
                         
                     case 6:
                         
                         switch(token.getType()){
                             case VALUE:
                                 urlsA.add(token.getValue());
-                                state=7;
+                                state=8;
                                 break;
                             default:
                                 //No interesa.
@@ -223,10 +217,14 @@ public class JFlexScraper implements WebScraper {
                                 state=0; //Reinicio del automata.
                                 break;
                             case SLASH:
-                                 /*comparar = recopilacion.substring(0,(palabra.length()+1));
+                                tagStack.pop();
+                               /* System.out.println(comparar+ "    " + recopilacion);
+                                 comparar = recopilacion.substring(0,(palabra.length()+1));
+                                 System.out.println(comparar + "    " + palabra);
                                 if(comparar.equalsIgnoreCase(palabra)){
                                     comparar = recopilacion.substring(comparar.length(),(recopilacion.length()+1));
                                     recopilacion= comparar;
+                                    System.out.println("pppppp");
                                 }*/
                                 state=8;
                                 break;
@@ -238,7 +236,8 @@ public class JFlexScraper implements WebScraper {
                     case 8:
                         switch(token.getType()){
                             case CLOSE:
-                                tagStack.remove(token.getValue());
+                                //tagStack.pop();
+                                //tagStack.remove(token.getValue());
                                 state=0; //Reinicio del automata.
                                 break;
                             default:
