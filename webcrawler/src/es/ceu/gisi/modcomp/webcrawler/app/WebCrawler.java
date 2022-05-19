@@ -4,7 +4,7 @@ import es.ceu.gisi.modcomp.webcrawler.exceptions.WebCrawlerException;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.File;
-
+import es.ceu.gisi.modcomp.webcrawler.jsoup.*;
 import es.ceu.gisi.modcomp.webcrawler.jflex.*;
 
 /**
@@ -46,18 +46,18 @@ public class WebCrawler {
          * También deberá mostrar un mensaje en pantalla indicando si el fichero
          * HTML que se ha pasado está bien balanceado.
          */
-        
+        JsoupScraper prueba = new JsoupScraper(TEST_FILE3);
         System.out.println("\n\n** JFLEXSCRAPER **\n\n");
         //JFlexScraper prueba = new JFlexScraper(TEST_FILE1);
         //JFlexScraper prueba = new JFlexScraper(TEST_FILE2);
         //JFlexScraper prueba = new JFlexScraper(TEST_FILE3);
-        JFlexScraper prueba = new JFlexScraper(TEST_FILE4);
+       // JFlexScraper prueba = new JFlexScraper(TEST_FILE4);
         System.out.println("links de imagenes:");
         System.out.println(prueba.retrieveHyperlinksIMG());
         System.out.println("links de A:");
         System.out.println(prueba.retrieveHyperlinksA());
         
-        System.out.println("\n Documentos valanceados: " + prueba.esDocumentoHTMLBienBalanceado());
+       //System.out.println("\n Documentos valanceados: " + prueba.esDocumentoHTMLBienBalanceado());
         /**
          * En segundo lugar, debajo de este comentario, pasará a demostrar el
          * uso de la clase JsoupScraper que ha programado. Para ello, escribirá
@@ -76,6 +76,7 @@ public class WebCrawler {
          * método tagUsage() que ha programado.
          */
         System.out.println("\n\n** JSOUPSCRAPER **\n\n");
+        
 
     }
 }

@@ -5,10 +5,11 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
+import java.util.ArrayList;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
-
+import org.jsoup.select.Elements;
 /**
  * Esta clase encapsula toda la lógica de interacción con el analizador Jsoup.
  *
@@ -64,7 +65,16 @@ public class JsoupScraper implements WebScraper {
     public List<String> retrieveHyperlinksA() {
 
         List<String> resultado = null;
-
+        Elements divTag = webPage.select("A");
+        resultado = new ArrayList();
+        for(int i = 0;i<divTag.size(); i++){
+          resultado.add(divTag.get(i).attr("href"));
+        }
+        /*
+        System.out.println(divTag.text());
+        resultado.add(divTag.attr("A").toString());
+        */
+        
         /**
          * Deberá programar este método. El método devolverá todas las URLs que
          * contengan las etiquetas A que se encuentre en el documento HTML que
@@ -85,7 +95,19 @@ public class JsoupScraper implements WebScraper {
     public List<String> retrieveHyperlinksIMG() {
 
         List<String> resultado = null;
-
+        resultado = new ArrayList();
+        Elements divTag = webPage.select("IMG");
+        //resultado.add(divTag.attr("src"));
+        //try{
+        //resultado.add(divTag.attr("src")/*.toString()*/);
+       // System.out.println(divTag.attr("IMG"));
+        //System.out.println(resultado.get(0));
+        for(int i = 0;i<divTag.size(); i++){
+          resultado.add(divTag.get(i).attr("src"));
+        }
+        /*}catch(Exception NullPointerException){
+            System.out.println("boom");
+        }*/
         /**
          * Deberá programar este método. El método devolverá todas las URLs que
          * contengan las etiquetas IMG que se encuentre en el documento HTML que
@@ -108,9 +130,8 @@ public class JsoupScraper implements WebScraper {
          * Deberá programar este método. Las estadísticas simplemente serán el
          * número de etiquetas de ese tipo que se encuentran en el documento.
          */
-
-        // De momento, devolvemos 0 para que el proyecto compile.
-        return 0;
+        Elements divTag = webPage.select(tag);
+        return divTag.size();
     }
 
     /**

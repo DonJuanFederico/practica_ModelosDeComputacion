@@ -148,7 +148,7 @@ public class JFlexScraper implements WebScraper {
                                     tagStack.push(token.getValue());
                                     //recopilacion = token.getValue() + recopilacion;
                                     //palabra = token.getValue();
-                                    state=7;
+                                    state=5;
                                 }
                                 break;
                             case SLASH:
@@ -165,7 +165,7 @@ public class JFlexScraper implements WebScraper {
                                      }else{
                                          tagsBalanced = false;
                                       }
-                                state=8;
+                                state=6;
                                 }
                             default:
                             //no interesa
@@ -178,10 +178,10 @@ public class JFlexScraper implements WebScraper {
                                 if(token.getValue().equals("href")){
                                     token = parser.next();
                                     if(token.getType()== Type.EQUAL){
-                                        state = 6;
+                                        state = 4;
                                         break;
                                     }
-                                    state=5;
+                                    //state=5;  //MIRARR
                                 }
                                 break;
                                 default:
@@ -191,7 +191,11 @@ public class JFlexScraper implements WebScraper {
                         switch(token.getType()){
                             case WORD:
                                 if(token.getValue().equals("src")){
-                                    state=9;
+                                    token = parser.next();
+                                    if(token.getType()==Type.EQUAL){
+                                        state=7;
+                                        break;
+                                    }
                                 }
                                 break;
                             default:
@@ -199,19 +203,19 @@ public class JFlexScraper implements WebScraper {
                         }
                         break;
                         
-                    case 6:
+                    case 4:
                         
                         switch(token.getType()){
                             case VALUE:
                                 urlsA.add(token.getValue());
-                                state=8;
+                                state=6;
                                 break;
                             default:
                                 //No interesa.
                         }
                         break;
                         
-                    case 7:
+                    case 5:
                         switch(token.getType()){
                             case CLOSE:
                                 state=0; //Reinicio del automata.
@@ -226,14 +230,14 @@ public class JFlexScraper implements WebScraper {
                                     recopilacion= comparar;
                                     System.out.println("pppppp");
                                 }*/
-                                state=8;
+                                state=6;
                                 break;
                             default:
                                 //No interesa.
                         }
                         break;
                         
-                    case 8:
+                    case 6:
                         switch(token.getType()){
                             case CLOSE:
                                 //tagStack.pop();
@@ -244,21 +248,11 @@ public class JFlexScraper implements WebScraper {
                                 //No interesa.
                         }
                         break;
-                    case 9:
-                        switch(token.getType()){
-                            case EQUAL:
-                                state=10;
-                                break;
-                            default:
-                                //No interesa.
-                        }
-                        break;
-                        
-                    case 10:
+                    case 7:
                         switch(token.getType()){
                             case VALUE:
                                 urlsIMG.add(token.getValue());
-                                state = 7;
+                                state = 5;
                                 break;
                             default:
                                 //No interesa.
