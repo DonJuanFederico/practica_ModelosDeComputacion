@@ -6,12 +6,15 @@
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/test/es/ceu/gisi/modcomp/webcrawler/testfiles/prueba4.html</file>
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/src/es/ceu/gisi/modcomp/webcrawler/jflex/lexico/Token.java</file>
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/test/es/ceu/gisi/modcomp/webcrawler/testfiles/prueba2.html</file>
-            <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/test/es/ceu/gisi/modcomp/webcrawler/tests/jflex/JFlexScraperTest.java</file>
+            <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/src/es/ceu/gisi/modcomp/webcrawler/scraper/WebScraper.java</file>
+            <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/src/es/ceu/gisi/modcomp/webcrawler/jsoup/JsoupScraper.java</file>
+            <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/test/es/ceu/gisi/modcomp/webcrawler/testfiles/intel.html</file>
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/src/es/ceu/gisi/modcomp/webcrawler/app/WebCrawler.java</file>
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/src/es/ceu/gisi/modcomp/webcrawler/jflex/lexico/Type.java</file>
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/test/es/ceu/gisi/modcomp/webcrawler/testfiles/TestFiles.java</file>
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/test/es/ceu/gisi/modcomp/webcrawler/testfiles/prueba3.html</file>
             <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/src/es/ceu/gisi/modcomp/webcrawler/jflex/JFlexScraper.java</file>
+            <file>file:/C:/Users/golro/Documents/Universidad/año%201/Modelos_de_Computacion/practica_ModelosDeComputacion/webcrawler/test/es/ceu/gisi/modcomp/webcrawler/testfiles/IBM%20-%20España.html</file>
         </group>
     </open-files>
 </project-private>

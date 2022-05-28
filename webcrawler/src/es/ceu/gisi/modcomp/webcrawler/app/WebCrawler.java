@@ -19,12 +19,8 @@ public class WebCrawler {
         
         final String TESTFILE_PATH = new java.io.File("").getAbsolutePath() + "/test/es/ceu/gisi/modcomp/webcrawler/testfiles/";
         
-        final File TEST_FILE1 = new File(TESTFILE_PATH + "prueba1.html");
-        final File TEST_FILE2 = new File(TESTFILE_PATH + "prueba2.html");
-        final File TEST_FILE3 = new File(TESTFILE_PATH + "prueba3.html");
-        final File TEST_FILE4 = new File(TESTFILE_PATH + "prueba4.html");
-        
-        
+        final File TEST_FILE1 = new File(TESTFILE_PATH + "IBM - España.html");
+        final File TEST_FILE2 = new File (TESTFILE_PATH  + "intel.html");
         /**
          * En este método main, debajo de este comentario, escribirá las líneas
          * necesarias para mostrar el funcionamiento de las clases JFlexScraper
@@ -46,18 +42,14 @@ public class WebCrawler {
          * También deberá mostrar un mensaje en pantalla indicando si el fichero
          * HTML que se ha pasado está bien balanceado.
          */
-        JsoupScraper prueba = new JsoupScraper(TEST_FILE3);
+        System.out.println("ANALIZANDO IBM\n");
+        JFlexScraper pruebaF = new JFlexScraper(TEST_FILE1);
         System.out.println("\n\n** JFLEXSCRAPER **\n\n");
-        //JFlexScraper prueba = new JFlexScraper(TEST_FILE1);
-        //JFlexScraper prueba = new JFlexScraper(TEST_FILE2);
-        //JFlexScraper prueba = new JFlexScraper(TEST_FILE3);
-       // JFlexScraper prueba = new JFlexScraper(TEST_FILE4);
         System.out.println("links de imagenes:");
-        System.out.println(prueba.retrieveHyperlinksIMG());
+        System.out.println(pruebaF.retrieveHyperlinksIMG());
         System.out.println("links de A:");
-        System.out.println(prueba.retrieveHyperlinksA());
-        
-       //System.out.println("\n Documentos valanceados: " + prueba.esDocumentoHTMLBienBalanceado());
+        System.out.println(pruebaF.retrieveHyperlinksA());
+        System.out.println("\n Documentos balanceados: " + pruebaF.esDocumentoHTMLBienBalanceado());
         /**
          * En segundo lugar, debajo de este comentario, pasará a demostrar el
          * uso de la clase JsoupScraper que ha programado. Para ello, escribirá
@@ -76,7 +68,27 @@ public class WebCrawler {
          * método tagUsage() que ha programado.
          */
         System.out.println("\n\n** JSOUPSCRAPER **\n\n");
+        JsoupScraper pruebaS = new JsoupScraper(TEST_FILE1);
+        System.out.println("links de imagenes:");
+        System.out.println(pruebaS.retrieveHyperlinksIMG());
+        System.out.println("links de A:");
+        System.out.println(pruebaS.retrieveHyperlinksA());
+        //Style script <--
         
-
+        JFlexScraper pruebaFi = new JFlexScraper(TEST_FILE2);
+        System.out.println("ANALIZANDO INTEL\n");
+        System.out.println("\n\n** JFLEXSCRAPER **\n\n");
+        
+        System.out.println("links de imagenes:");
+        System.out.println(pruebaFi.retrieveHyperlinksIMG());
+        System.out.println("links de A:");
+        System.out.println(pruebaFi.retrieveHyperlinksA());
+        System.out.println("\n Documentos balanceados: " + pruebaFi.esDocumentoHTMLBienBalanceado());
+        System.out.println("\n\n** JSOUPSCRAPER **\n\n");
+        JsoupScraper pruebaSi = new JsoupScraper(TEST_FILE2);
+        System.out.println("links de imagenes:");
+        System.out.println(pruebaSi.retrieveHyperlinksIMG());
+        System.out.println("links de A:");
+        System.out.println(pruebaSi.retrieveHyperlinksA());
     }
 }
