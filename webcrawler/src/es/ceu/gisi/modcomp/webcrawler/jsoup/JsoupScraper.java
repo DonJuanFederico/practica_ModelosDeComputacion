@@ -70,10 +70,6 @@ public class JsoupScraper implements WebScraper {
         for(int i = 0;i<divTag.size(); i++){
           resultado.add(divTag.get(i).attr("href"));
         }
-        /*
-        System.out.println(divTag.text());
-        resultado.add(divTag.attr("A").toString());
-        */
         
         /**
          * Deberá programar este método. El método devolverá todas las URLs que
@@ -97,17 +93,9 @@ public class JsoupScraper implements WebScraper {
         List<String> resultado = null;
         resultado = new ArrayList();
         Elements divTag = webPage.select("IMG");
-        //resultado.add(divTag.attr("src"));
-        //try{
-        //resultado.add(divTag.attr("src")/*.toString()*/);
-       // System.out.println(divTag.attr("IMG"));
-        //System.out.println(resultado.get(0));
         for(int i = 0;i<divTag.size(); i++){
           resultado.add(divTag.get(i).attr("src"));
         }
-        /*}catch(Exception NullPointerException){
-            System.out.println("boom");
-        }*/
         /**
          * Deberá programar este método. El método devolverá todas las URLs que
          * contengan las etiquetas IMG que se encuentre en el documento HTML que
